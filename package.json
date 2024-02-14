@@ -15,8 +15,12 @@
     "mysql": "^2.18.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
   "author": "ATP3-Project",
-  "license": "Public"
+  "license": "Public",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }
