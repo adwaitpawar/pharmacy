@@ -1,0 +1,7 @@
+# environment.yaml
+development:
+  url: "http://google.com"
+qa:
+  url: "http://gmail.com"
+production:
+  url: "http://facebook.com"
