@@ -18,7 +18,6 @@ pipeline {
         
         stage('Checkout') {
             steps {
-                // Lightweight checkout support not available, falling back to full checkout
                 checkout scm
             }
         }
@@ -39,41 +38,11 @@ pipeline {
         
         stage('Build') {
             steps {
-                echo "Building on ${params.ENVIRONMENT} environment"
-                sh "echo ENVIRONMENT: ${params.ENVIRONMENT}"
-                    
-                // Run Webpack to bundle the application
-                sh 'webpack --config webpack.config.js'
+                // Run npm build command
+                sh 'npm run build'
             }
         }
         
-        stage('Test') {
-            steps {
-                // Run tests if applicable
-                sh 'npm test'
-            }
-        }
         
-        stage('Build Image through Kaniko') {
-            steps {
-                echo "Build Image through Kaniko"
-                // Add Kaniko build steps here
-            }
-        }
-        
-        stage('Push Artifact to Nexus Repo') {
-            steps {
-                echo "Push Artifact to Nexus Repo"
-                // Add Nexus artifact push steps here
-            }
-        }
-        
-        stage('Deployment in EKS through Helm') {
-            steps {
-                echo "Current branch name: ${env.BRANCH_NAME}"
-                echo "Deployment in EKS through Helm"
-                // Add deployment steps here
-            }
-        }
     }
 }
